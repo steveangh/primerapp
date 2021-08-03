@@ -1,0 +1,16 @@
+
+const CartWidget = () => {
+
+    return (
+        <header>
+            <i class="fab fa-facebook"></i>
+            <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+            <button className= "material-icons-outlined">shopping_cart</button>
+        </header>
+        
+    )
+
+}
+
+export default CartWidget
+

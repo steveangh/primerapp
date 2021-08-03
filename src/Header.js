@@ -1,17 +1,12 @@
-import NavBar from "./NavBar"
+import NavBar from "./components/NavBar"
 
 const Header = ({nombre, edad, usuarios, children}) => {
-
-    nombre = "ABC"
-
-    console.log(nombre)
-    console.log(edad)
-    console.log(usuarios)
 
     return (
         <header>
             <h1>Titulo</h1>
             <p>Bienvenido {nombre}</p>
+            {children}
             <NavBar />
         </header>
     )
