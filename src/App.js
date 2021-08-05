@@ -1,18 +1,30 @@
-import {useState} from "react"
+import {useState,useEffect} from "react";
 import NavBar from "./components/NavBar"
 import "./estilos.css"
 import CartWidget from "./components/CartWidget"
 import ItemListContainer from "./components/ItemListContainer"
 import "bootstrap/dist/css/bootstrap.min.css"
+import { u } from "./components/usuarios";
+import ItemList from "./components/ItemList"
 
 const App = () => {
 
-       const usuarios = [{nombre: "Steve"}]
+    const usuarios = [{nombre: "Steve"}]
        //const contador = 0
 
-       
-
     //    console.log(resultado)
+
+    const [u,setUsuarios] = useState([])
+
+    useEffect(() => {
+        const promesa = new Promise((resolve,reject)=>{
+            setTimeout((usuarios)=>{                
+            },2000)
+        })
+        promesa.then((usuarios)=>setUsuarios(u)  
+        )
+
+    })
 
     const [contador, setContador] = useState(0)
 
@@ -37,9 +49,14 @@ const App = () => {
                     <button onClick={sumarContador} className="btn btn-primary">+</button>
                     <br/>
                     <button className="btn btn-success">Añadir Carrito</button>
-
+                    <div>
+                        Item List Container
+                        <ItemList usuarios={usuarios}/>
+                    </div>
                     </>
                    )
+
+                   
 
 
     //    class App extends React.Component {
@@ -75,3 +92,4 @@ const App = () => {
 
 }
 export default App
+
