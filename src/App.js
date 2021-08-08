@@ -1,4 +1,5 @@
 import {useState,useEffect} from "react";
+import React, {Component} from 'react';
 import NavBar from "./components/NavBar"
 import "./estilos.css"
 import CartWidget from "./components/CartWidget"
@@ -25,6 +26,7 @@ const App = () => {
         )
 
     })
+    
 
     const [contador, setContador] = useState(0)
 
@@ -35,6 +37,17 @@ const App = () => {
     const restarContador = () => {
         setContador(contador - 1)
     }
+
+    componentDidMount(); { 
+        fetch('https://fakestoreapi.com/products/1')
+            .then(response=> {
+                return response.json();
+            })
+            .then(response => {
+                console.log(response);
+            })
+    }
+
 
        return (
                 <>
@@ -52,6 +65,9 @@ const App = () => {
                     <div>
                         Item List Container
                         <ItemList usuarios={usuarios}/>
+                    </div>
+                    <div className="App">
+                        Fetch
                     </div>
                     </>
                    )

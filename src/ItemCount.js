@@ -1,4 +1,6 @@
-import "./estilos.css"
+// import React from 'react';
+
+import "./estilos.";
 
 const App = () => {
 
@@ -27,3 +29,5 @@ const App = () => {
             </>
                 )
     }
+
+export default ItemCount
