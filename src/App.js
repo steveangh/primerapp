@@ -1,33 +1,33 @@
-import {useState,useEffect} from "react";
+import ItemDetailContainer from "./components/ItemDetailContainer"
+import ItemListContainer from "./components/ItemListContainer"
 import NavBar from "./components/NavBar"
 import "./estilos.css"
-import CartWidget from "./components/CartWidget"
-import ItemListContainer from "./components/ItemListContainer"
-import "bootstrap/dist/css/bootstrap.min.css"
-import { u } from "./components/usuarios";
-import ItemList from "./components/ItemList"
-import ItemDetailContainer from "./components/ItemDetailContainer";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom"
+import CustomProvider from "./components/CustomProvider"
+
 
 const App = () => {
 
     return (
-        <>
+        // <CustomProvider>
             <BrowserRouter>
-            <NavBar />
-
-            <Route path="/" component={ItemListContainer}/>
-            <Route path="/categoria/:id" component={ItemListContainer}/>
-            <Route path="/item/:id" component={ItemDetailContainer}/>
-            {/* <ItemListContainer greeting="Bienvenido"/>
-            <ItemDetailContainer/> */}
+                <NavBar />
+                <Switch>
+                    <Route path="/" component={ItemListContainer} exact />
+                    <Route path="/categoria/:id" component={ItemListContainer} />
+                    <Route path="/item/:id" component={ItemDetailContainer} />
+                    <Route path="/login"/>
+                    <Route path="/logout"/>
+                </Switch>
             </BrowserRouter>
-        </>
-        
-        )
+        // </CustomProvider>
 
+    )
 }
-export default App    
+
+
+
+export default App
 
     // const usuarios = [{nombre: "Steve"}]
     //    //const contador = 0

@@ -1,32 +1,36 @@
 import {useState} from "react"
 
+const ItemCount = ({ stock , initial , onAdd }) => {
 
-const ItemCount = () => {
+    const [contador,setContador] = useState(initial)
 
-    // const usuarios = [{nombre: "Steve"}]
-    // const nombre = "Alex"
-    //const contador = 0
+    const aumentarContador = () => {
+        if(contador < stock){
+            setContador(contador + 1)
+        }
+    }
 
-    const [contador, setContador] = useState(0)
+    const restarContador = () => {
+        if(contador > 1){
+            setContador(contador - 1)
+        }
+    }
 
- //    console.log(resultado)
-
- const sumarContador = () => {
-     setContador(contador + 1)
- }
-
- const restarContador = () => {
-     setContador(contador - 1)
- }
+    const confirmar = () => {
+        if(stock > 0){
+            onAdd(contador)
+        }
+    }
 
     return (
-             <>
-                 <p>Contador: {contador} </p>
-                 <button onClick={sumarContador}>+</button>
-                 <button onClick={restarContador}>-</button>
-                 <button>Agregar al Carrito</button>
-            </>
-                )
-    }
+        <>
+            <p>Contador Actual : {contador}</p>
+            <button onClick={aumentarContador}>+</button>
+            <button onClick={restarContador}>-</button>
+            <button onClick={confirmar}>confirmar</button>
+        </>
+    )
+
+}
 
 export default ItemCount
