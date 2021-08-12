@@ -1,5 +1,4 @@
 import {useState,useEffect} from "react";
-import React, {Component} from 'react';
 import NavBar from "./components/NavBar"
 import "./estilos.css"
 import CartWidget from "./components/CartWidget"
@@ -7,70 +6,92 @@ import ItemListContainer from "./components/ItemListContainer"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { u } from "./components/usuarios";
 import ItemList from "./components/ItemList"
+import ItemDetailContainer from "./components/ItemDetailContainer";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
 
-    const usuarios = [{nombre: "Steve"}]
-       //const contador = 0
+    return (
+        <>
+            <BrowserRouter>
+            <NavBar />
 
-    //    console.log(resultado)
-
-    const [u,setUsuarios] = useState([])
-
-    useEffect(() => {
-        const promesa = new Promise((resolve,reject)=>{
-            setTimeout((usuarios)=>{                
-            },2000)
-        })
-        promesa.then((usuarios)=>setUsuarios(u)  
+            <Route path="/" component={ItemListContainer}/>
+            <Route path="/categoria/:id" component={ItemListContainer}/>
+            <Route path="/item/:id" component={ItemDetailContainer}/>
+            {/* <ItemListContainer greeting="Bienvenido"/>
+            <ItemDetailContainer/> */}
+            </BrowserRouter>
+        </>
+        
         )
 
-    })
+}
+export default App    
+
+    // const usuarios = [{nombre: "Steve"}]
+    //    //const contador = 0
+
+    // //    console.log(resultado)
+
+    // const [u,setUsuarios] = useState([])
+
+    // useEffect(() => {
+    //     const promesa = new Promise((resolve,reject)=>{
+    //         setTimeout((usuarios)=>{                
+    //         },2000)
+    //     })
+    //     promesa.then((usuarios)=>setUsuarios(u)  
+    //     )
+
+        
+
+    // })
     
 
-    const [contador, setContador] = useState(0)
+    // const [contador, setContador] = useState(0)
 
-    const sumarContador = () => {
-        setContador(contador + 1)
-    }
+    // const sumarContador = () => {
+    //     setContador(contador + 1)
+    // }
 
-    const restarContador = () => {
-        setContador(contador - 1)
-    }
+    // const restarContador = () => {
+    //     setContador(contador - 1)
+    // }
 
-    componentDidMount(); { 
-        fetch('https://fakestoreapi.com/products/1')
-            .then(response=> {
-                return response.json();
-            })
-            .then(response => {
-                console.log(response);
-            })
-    }
+    // useEffect(() => {
+    //     fetch('https://fakestoreapi.com/products/1')
+    //         .then(response=> {
+    //             return response.json();
+    //         })
+    //         .then(response => {
+    //             console.log(response);
+    //         })
+    // }
 
 
-       return (
-                <>
-                    <NavBar/>
-                    <ItemListContainer greeting="Hola a Todos"/>
-                    <CartWidget/>
-                    <header nombre="Steve" edad={29} usuarios={usuarios}>
-                        <p>Hola Mundo!</p>
-                    </header>
-                    <p>Contador: {contador} </p>
-                    <button onClick={restarContador} className="btn btn-danger">-</button>
-                    <button onClick={sumarContador} className="btn btn-primary">+</button>
-                    <br/>
-                    <button className="btn btn-success">Añadir Carrito</button>
-                    <div>
-                        Item List Container
-                        <ItemList usuarios={usuarios}/>
-                    </div>
-                    <div className="App">
-                        Fetch
-                    </div>
-                    </>
-                   )
+    //    return (
+    //             <>
+    //                 <NavBar/>
+    //                 <ItemListContainer greeting="Hola a Todos"/>
+    //                 <CartWidget/>
+    //                 <header nombre="Steve" edad={29} usuarios={usuarios}>
+    //                     <p>Hola Mundo!</p>
+    //                 </header>
+    //                 <p>Contador: {contador} </p>
+    //                 <button onClick={restarContador} className="btn btn-danger">-</button>
+    //                 <button onClick={sumarContador} className="btn btn-primary">+</button>
+    //                 <br/>
+    //                 <button className="btn btn-success">Añadir Carrito</button>
+    //                 <div>
+    //                     Item List Container
+    //                     <ItemList usuarios={usuarios}/>
+    //                 </div>
+    //                 <div className="App">
+    //                     Fetch
+    //                 </div>
+    //                 </>
+    //                )
 
                    
 
@@ -106,6 +127,5 @@ const App = () => {
 //        }
 // }
 
-}
-export default App
+
 

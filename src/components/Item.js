@@ -1,11 +1,14 @@
 import React from "react"
 
 
-const Item = ({usuario}) => {
+const Item = ({item}) => {
     return (
-        <li>
-            {usuario.nombre}
-        </li>
+        <article className="item">
+         <h3>{item.title} - ${item.price}</h3>   
+         <img src={item.pictureUrl} alt="thumbnail"/>
+         <p>{item.description}</p>
+
+        </article>
         )
 }
 

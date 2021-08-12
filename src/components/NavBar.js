@@ -1,4 +1,5 @@
 import CartWidget from "./CartWidget";
+import {Link,NavLink} from "react-router-dom"
 
 const NavBar = ({ nombre}) => 
     <>
