@@ -5,3 +5,40 @@
     box-sizing: border-box;
 }
 
+html , body , #root {
+    min-height: 100vh;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+#root > header {
+    display: flex;
+    justify-content: space-between;    
+    align-items: center;
+    background-color: green;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+#root > header a {
+    text-decoration: none;
+    color: black;
+}
+
+#root > header nav a {
+    margin-left: 1rem;
+}
+
+
+#root > header button {
+    background-color: transparent;
+    border: none;
+}
+
+
+#item-list {
+    padding: 1rem;
+}

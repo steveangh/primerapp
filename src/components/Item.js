@@ -13,11 +13,11 @@ const Item = ({item}) => {
             <h3>{item.title} - ${item.price}</h3>
             <img src={item.pictureUrl} alt="thumbnail" />
             <p>{item.description}</p>
-            <button onClick={resultado.cambiarNombre}>
+            {/* <button onClick={resultado.cambiarNombre}>
                 cambiar nombre
-            </button>
+            </button> */}
             <button>
-                <Link to={`/item/${item.id}`}>ver detalle</Link>
+                <Link to={`/item/${item.id}`}>Detalles</Link>
             </button>
         </article>
      );

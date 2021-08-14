@@ -4,11 +4,11 @@ import {Provider} from "../contexto"
 
 const CustomProvider = ({children}) => {
 
-    const [nombre,setNombre] = useState("Horacio")
+    const [nombre,setNombre] = useState("")
     
 
     const cambiarNombre = () => {
-        setNombre("Carlos")
+        setNombre("")
     }
     
 
