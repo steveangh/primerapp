@@ -5,8 +5,10 @@ const ItemDetail = ({ item }) => {
     const onAdd = (cantidad) => {
         console.log("State Uplifting")
         console.log("Recibi la cantidad de un componente hijo")
-        console.log(cantidad)
+        console.log("Se compraron " + cantidad)
     }
+
+
 
     return (
         <article className="item">
@@ -14,6 +16,7 @@ const ItemDetail = ({ item }) => {
             <img src={item.pictureUrl} alt="thumbnail" />
             <p>{item.description}</p>
             <ItemCount stock={item.stock} initial={item.stock >= 1 ? 1 : 0} onAdd={onAdd}/>
+           
         </article>
     );
 }

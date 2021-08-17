@@ -4,23 +4,39 @@ import NavBar from "./components/NavBar"
 import "./estilos.css"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import CustomProvider from "./components/CustomProvider"
+import ItemCount from "./components/ItemCount"
 
 
 const App = () => {
 
+    // const hacerClick = (e) => {
+    //     console.log(e)
+    //     console.log("Hola")
+    // }
+
     return (
-        // <CustomProvider>
-            <BrowserRouter>
-                <NavBar />
+
+        <BrowserRouter>
+            <NavBar />
                 <Switch>
                     <Route path="/" component={ItemListContainer} exact />
                     <Route path="/categoria/:id" component={ItemListContainer} />
                     <Route path="/item/:id" component={ItemDetailContainer} />
                     <Route path="/login"/>
                     <Route path="/logout"/>
-                </Switch>
-            </BrowserRouter>
-        // </CustomProvider>
+                    <Route path="/cart" component={ItemCount}/>
+                </Switch> 
+        {/* <button onClick={}> 
+            Click Me
+        </button> */}
+    </BrowserRouter>
+
+        
+
+        // //<CustomProvider>
+
+            
+        // //</CustomProvider>
 
     )
 }

@@ -12,6 +12,7 @@ const productosInit = [
 
 const ItemListContainer = ({greeting}) => {
 
+
     const [cantidad, setCantidad] = useState(0)
     const [items, setItems] = useState([])
     const params = useParams()
@@ -52,7 +53,22 @@ const ItemListContainer = ({greeting}) => {
             {/* <ItemCount stock={5} initial={1} onAdd={onAdd}/> */}
             <ItemList items={items} />
         </div>
-    )
+     )
 }
 
 export default ItemListContainer
+
+
+/* 
+
+
+   
+
+
+
+
+
+
+
+
+*/
