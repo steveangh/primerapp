@@ -1,3 +1,4 @@
+import {createContext, useState} from 'react';
 import ItemDetailContainer from "./components/ItemDetailContainer"
 import ItemListContainer from "./components/ItemListContainer"
 import NavBar from "./components/NavBar"
@@ -5,32 +6,44 @@ import "./estilos.css"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import CustomProvider from "./components/CustomProvider"
 import ItemCount from "./components/ItemCount"
-
+// import Cart from "./Cart"
+export const contexto = createContext({nombre:"steve"})
+const {Consumer, Provider} = contexto
 
 const App = () => {
 
+    const [nombre, setNombre] = useState("Steve")
+    
+    const cambiarNombre = () => {
+        setNombre("Alex")
+    }
+
+    const valorDelContexto = {
+        nombre : nombre,
+        cambiarNombre : cambiarNombre
+    }
     // const hacerClick = (e) => {
     //     console.log(e)
     //     console.log("Hola")
     // }
 
     return (
-
-        <BrowserRouter>
-            <NavBar />
-                <Switch>
-                    <Route path="/" component={ItemListContainer} exact />
-                    <Route path="/categoria/:id" component={ItemListContainer} />
-                    <Route path="/item/:id" component={ItemDetailContainer} />
-                    <Route path="/login"/>
-                    <Route path="/logout"/>
-                    <Route path="/cart" component={ItemCount}/>
-                </Switch> 
-        {/* <button onClick={}> 
-            Click Me
-        </button> */}
-    </BrowserRouter>
-
+        <Provider value={valorDelContexto}>
+            <BrowserRouter>
+                <NavBar />
+                    <Switch>
+                        <Route path="/" component={ItemListContainer} exact />
+                        <Route path="/categoria/:id" component={ItemListContainer} />
+                        <Route path="/item/:id" component={ItemDetailContainer} />
+                        <Route path="/login"/>
+                        <Route path="/logout"/>
+                        <Route path="/cart" component={ItemCount}/>
+                    </Switch> 
+                {/* <button onClick={}> 
+                    Click Me
+                </button> */}
+            </BrowserRouter>
+        </Provider>
         
 
         // //<CustomProvider>
