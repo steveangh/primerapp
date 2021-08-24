@@ -26,6 +26,10 @@ const ItemListContainer = ({greeting}) => {
 
     }, [])
 
+    setInterval (()=>{
+        console.log("Haciendo un ping por socket")
+    },1000)
+
     const getItem = () => {
 
 
