@@ -1,9 +1,11 @@
+import React from 'react'
 import { useContext } from "react";
-import {contexto} from "./CartContext"
+import { contexto } from "./CartContext"
+import { Link } from "react-router-dom"
 
 const Cart = () => {
 
-    const {carrito, removeItem, clear, carritoTotal} = useContext(context)
+    const {carrito, removeItem, clear, carritoTotal} = useContext(contexto)
 
     if(carrito.lenght >0) {
 
@@ -39,4 +41,4 @@ const Cart = () => {
     }
 }
    
-
+export default Cart

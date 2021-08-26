@@ -4,9 +4,9 @@ import ItemListContainer from "./components/ItemListContainer"
 import NavBar from "./components/NavBar"
 import "./estilos.css"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-import CartContext from "./components/CartContext"
+import CustomProvider from "./components/CartContext"
 import ItemCount from "./components/ItemCount"
-// import Cart from "./Cart"
+import Cart from "./components/Cart"
 export const contexto = createContext({nombre:"steve"})
 const {Consumer, Provider} = contexto
 
@@ -37,7 +37,7 @@ const App = () => {
                         <Route path="/item/:id" component={ItemDetailContainer} />
                         <Route path="/login"/>
                         <Route path="/logout"/>
-                        <Route path="/cart" component={ItemCount}/>
+                        <Route path="/cart" component={Cart}/>
                     </Switch> 
 
             </BrowserRouter>
