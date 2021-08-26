@@ -12,20 +12,69 @@ const {Consumer, Provider} = contexto
 
 const App = () => {
 
-    const [nombre, setNombre] = useState("Steve")
+    // const [nombre, setNombre] = useState("Steve")
     
-    const cambiarNombre = () => {
-        setNombre("Alex")
-    }
+    // const cambiarNombre = () => {
+    //     setNombre("Alex")
+    // }
 
-    const valorDelContexto = {
-        nombre : nombre,
-        cambiarNombre : cambiarNombre
-    }
+    // const valorDelContexto = {
+    //     nombre : nombre,
+    //     cambiarNombre : cambiarNombre
+    // }
     // const hacerClick = (e) => {
     //     console.log(e)
     //     console.log("Hola")
     // }
+
+    //https://www.npmjs.com/package/validator
+    //https://www.npmjs.com/package/react-hook-form
+
+    const [nombre,setNombre] = useState("")
+    const [telefono,setTelefono] = useState("")
+    const [email,setEmail] = useState("")
+    const [error,setError] = useState(false)
+
+    const guardarNombre = (e) => {
+        //console.log("Estan escribiendo en el input nombre")
+        const input = e.target
+        const valor = input.value
+        setNombre(valor)
+    }
+
+    const guardarTelefono = (e) => {
+        //console.log("Estan escribiendo en el input nombre")
+        const input = e.target
+        const valor = input.value
+        setTelefono(valor)
+    }
+
+    const guardarEmail = (e) => {
+        //console.log("Estan escribiendo en el input nombre")
+        const input = e.target
+        const valor = input.value
+        setEmail(valor)
+    }
+
+    const realizarPedido = (e) => {
+        e.preventDefault()
+        //console.log("Guardando pedido")
+        //const buyer = {nombre,telefono,email}
+        if(validarCampos()){
+            setError(false)
+            console.log("Valido todo y guardo la orden")
+        }else{
+            setError(true)
+        }
+    }
+
+    const validarCampos = () => {
+        if(nombre.trim().length && telefono.trim().length && email.trim().length){
+            return true
+        }else {
+            return false
+        }
+    }
 
     return (
         <Provider value={valorDelContexto}>
@@ -39,6 +88,20 @@ const App = () => {
                         <Route path="/logout"/>
                         <Route path="/cart" component={Cart}/>
                     </Switch> 
+
+                    {error? <p>Por favor completar todos los campos</p> : null }
+
+        <form onSubmit={realizarPedido}>
+
+            <input type="text" placeholder="Nombre" onChange={guardarNombre}/>
+
+            <input type="text" placeholder="Telefono" onChange={guardarTelefono}/>
+
+            <input type="text" placeholder="Email" onChange={guardarEmail}/>
+
+            <button /* onClick={realizarPedido} */>guardar</button>
+
+        </form>
 
             </BrowserRouter>
         </Provider>
