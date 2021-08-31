@@ -1,10 +1,8 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { contexto } from "./CartContext"
-import {Badge} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
-import {faBell} from '@fortawesome/free-solid-svg-icons'
+
 
 
 export const CartWidget = () => {    
@@ -18,6 +16,7 @@ export const CartWidget = () => {
 
     <Link to="/cart">
     <button className="material-icons">shopping_cart</button>
+    <FontAwesomeIcon icon={faBell} style={{color:'black', margin: "auto"}}/>
     {carrito.length ? carrito.length : null}
     </Link>
     // <div>
@@ -33,15 +32,6 @@ export const CartWidget = () => {
     )
 
 }
-
-    // const  {carrito, badge}  = useContext(contexto)
-    
-    // return (
-    //     <Link to="/cart">
-    //         <button className="material-icons">shopping_cart</button>
-    //         {carrito.length > 0 ? carrito.map : null}
-    //     </Link>
-    // )
 
 
 export default CartWidget

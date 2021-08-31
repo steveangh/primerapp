@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ItemCount from "./ItemCount"
 import ItemList from "./ItemList";
 import {useParams} from "react-router-dom"
-import { firestore } from "../firebase";
+import { getFirestore } from "../firebase";
 
 
 // const productosInit = [
@@ -20,35 +20,43 @@ const ItemListContainer = ({greeting}) => {
     const params = useParams()
 
     useEffect(() => {
+      
+    const db = getFirestore () 
     
-     //Referencia a la BD.   
-    const db = firestore () 
-    
-    //Referencia a una colección.
-    const collection = db.collection("productos")
-    
-    //Este es mi query    
-    // const query = collection.get()
+    const itemCollection = db.collection("productos")
+    const item = itemCollection.doc(itemId)
+
+    itemCollection.get().then((querySnapshot) => {
+        if(querySnapshot.size === 0) {
+            console.log('Item no existe :(');
+        }
+        setItems(querySnapshot.docs.map(doc => doc.data()));
+    }).catch((error) => {
+        console.log("Error buscando Items", error);
+    }).finally(() => {
+        setLoading(false);
+    });
+
     const filtro = collection.where("categoryId", "==", "1")
-    // filtro = filtro.where("price",">",450)
+   
     const query = filtro.get()
     const query = collection.doc("9aW0hBEMzKHtVfvGbgR5")
 
-    //Le saco las cosas a la promesa
-    qquery.then((resultado)=> {
-        const resultado_parseado= []
-        resultado.forEach((documento)=>{
-            const id =documento.id
-            const data = documento.data()
-            const data_final = {id,...data}
-            resultado_parseado.push(data_final)
-            console.log(data_final)
-            // setProducts(data_final)
-        })
-        setproductos(resultado_parseado)
-        console.log(resultado_parseado)
-        setLoading(false)
-    })
+    // //Le saco las cosas a la promesa
+    // query.then((resultado)=> {
+    //     const resultado_parseado= []
+    //     resultado.forEach((documento)=>{
+    //         const id =documento.id
+    //         const data = documento.data()
+    //         const data_final = {id,...data}
+    //         resultado_parseado.push(data_final)
+    //         console.log(data_final)
+    //         // setProducts(data_final)
+    //     })
+    //     setproductos(resultado_parseado)
+    //     console.log(resultado_parseado)
+    //     setLoading(false)
+    // })
 }, [])
 
 
