@@ -12,7 +12,7 @@ const NavBar = () =>
             <Link to="/categoria/2">Bikinis</Link>
             <Link to="/categoria/3">Accesorios</Link>
             <Link to="/categoria/4">Contacto</Link>
-            <CartWidget/>
+            {/* <CartWidget/> */}
         </nav>
     </header>
 

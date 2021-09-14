@@ -8,6 +8,7 @@ const {Consumer,Provider} = contexto
 const CartContext = ({children}) => {
 
     const [carrito,setCarrito] = useState([])
+    console.log(1)
 
     const cantidadTotal = () => {
         if (carrito.length === 0) {
@@ -32,17 +33,15 @@ const CartContext = ({children}) => {
     setCarrito([])
         console.log("Clear")
     }
-
+    
     const empty = () => {
         setCarrito([])
     }
-
+   
     const isInCart = (itemId) => {
         return carrito.filter(item => item.item.id === itemId).length === 1
     }
 
-    // const contexto_para_consumir = {carrito,addItem,removeItem,clear}
-    
     return (
         <Provider value= {{addItem, carrito, cantidadTotal, clear, empty, removeItem, isInCart}} >
             {children}
